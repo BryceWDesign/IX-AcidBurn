@@ -1,28 +1,27 @@
 """
-IX-AcidBurn Core Reasoning Module
+IX-AcidBurn Core Module
 
-This module contains the core reasoning logic for IX-AcidBurn, now enhanced
-to delegate complex domain-specific queries to IX-Gibson via the GibsonAdapter.
+Processes queries related to cryptography and secure communications,
+leveraging IX-Gibson for domain knowledge.
 """
 
 from .gibson_adapter import GibsonAdapter
 
 class AcidBurnCore:
     def __init__(self):
-        self.gibson_adapter = GibsonAdapter()
+        self.gibson = GibsonAdapter()
 
-    def answer_query(self, question: str) -> str:
+    def handle_query(self, query: str) -> str:
         """
-        Process a question, offloading domain-specific parts to IX-Gibson.
+        Sends query to IX-Gibson and returns the cryptography-focused response.
 
         Args:
-            question (str): The question string to answer.
+            query (str): User input related to cryptography.
 
         Returns:
-            str: Response answer from Gibson or fallback message.
+            str: Answer string or error message.
         """
-        # For demonstration, all queries routed to Gibson.
-        response = self.gibson_adapter.query_gibson(question)
+        response = self.gibson.query_gibson(query)
         if "error" in response:
-            return f"[AcidBurn Error]: {response['error']}"
-        return response.get("answer", "[AcidBurn]: No answer provided.")
+            return f"[AcidBurn Error] {response['error']}"
+        return response.get("answer", "[AcidBurn] No answer available.")
