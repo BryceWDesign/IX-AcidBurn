@@ -1,15 +1,17 @@
 """
-Configuration file for IX-AcidBurn Gibson connection settings.
+Gibson Configuration — IX-AcidBurn
+
+Defines connection parameters for communication with IX-Gibson central node.
 """
 
-# URL endpoint for the IX-Gibson API
+# IX-Gibson API endpoint URL
 GIBSON_API_URL = "http://localhost:9000/api/query"
 
-# Timeout in seconds for Gibson API requests
+# Timeout for API requests in seconds
 REQUEST_TIMEOUT_SECONDS = 5
 
 # Number of retry attempts for failed requests
 RETRY_ATTEMPTS = 3
 
-# Delay in seconds between retry attempts
+# Backoff interval between retries in seconds
 RETRY_BACKOFF_SECONDS = 2
